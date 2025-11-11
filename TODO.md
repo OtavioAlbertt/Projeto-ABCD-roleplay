@@ -1,0 +1,5 @@
+- [x] Remove supabase.js file
+- [x] Clean script.js: remove all Supabase functions and logs, keep only localStorage
+- [x] Update admin.html: remove Supabase scripts, change loading to localStorage only
+- [x] Update registro-aeronaves.html: remove Supabase scripts, change to localStorage only
+- [x] Verify no other files reference Supabase
