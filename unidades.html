@@ -40,8 +40,15 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.5);
-      backdrop-filter: blur(5px);
+      background-color: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      pointer-events: auto;
+    }
+    .modal.unit-modal {
+      pointer-events: none;
+    }
+    .modal.unit-modal .modal-content {
+      pointer-events: auto;
     }
     .modal-content {
       background: rgba(255,255,255,0.1);
@@ -194,6 +201,25 @@
       <input type="text" id="loginUser" placeholder="Nome de usuário" />
       <input type="password" id="loginPassword" placeholder="Digite a senha" />
       <button id="loginConfirm" class="btn-outline-success">Entrar</button>
+    </div>
+  </div>
+
+  <!-- Modal de Detalhes da Unidade -->
+  <div id="unitModal" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width: 600px;">
+      <span class="close" id="unitModalClose">&times;</span>
+      <img id="unitImage" src="" alt="Imagem da Unidade" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 20px;">
+      <h3 id="unitTitle">Título da Unidade</h3>
+      <p id="unitDescription">Descrição detalhada da unidade.</p>
+      <h4>Área de Atuação:</h4>
+      <p id="unitArea">Área específica onde a unidade opera.</p>
+      <h4>Funções Principais:</h4>
+      <ul id="unitFunctions">
+        <li>Função 1</li>
+        <li>Função 2</li>
+      </ul>
+      <h4>Informações Adicionais:</h4>
+      <p id="unitAdditional">Detalhes extras sobre a unidade.</p>
     </div>
   </div>
 
