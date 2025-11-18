@@ -14,7 +14,7 @@ const MEMBER_LOGINS = {
 // =================== DADOS DOS GUERREIROS ===================
 const warriorDetails = {
   "Maj. Luke": {
-    image: "MajorDADOS.png",
+    image: "MajorDADOS.jpg",
     role: "Comando Geral",
     description: "Maj. Luke é o líder supremo da Força Aérea Brasileira, um estrategista nato com décadas de experiência em operações aéreas. Sua carreira começou nas bases militares, onde demonstrou excepcional habilidade em liderança e tomada de decisões críticas. Como Comando Geral, Maj. Luke coordena todas as operações da FAB, garantindo que o espaço aéreo brasileiro esteja sempre protegido e que a instituição continue evoluindo com honra e excelência."
   },
@@ -163,10 +163,15 @@ const unitDetails = {
 
 // =================== MODAL DE LOGIN ===================
 document.addEventListener("DOMContentLoaded", () => {
+  const choiceModal = document.getElementById('choiceModal');
   const modal = document.getElementById('loginModal');
   const btnEntrar = document.getElementById('btnEntrar');
+  const btnAdmin = document.getElementById('btnAdmin');
+  const btnVisitante = document.getElementById('btnVisitante');
   const closeBtns = document.getElementsByClassName('close');
   const loginConfirm = document.getElementById('loginConfirm');
+
+  // Modal removido - não mostrar mais
 
   if (btnEntrar) {
     btnEntrar.onclick = function() {
@@ -186,6 +191,9 @@ document.addEventListener("DOMContentLoaded", () => {
     window.onclick = function(event) {
       if (event.target == modal) {
         modal.style.display = 'none';
+      }
+      if (event.target == choiceModal) {
+        choiceModal.style.display = 'none';
       }
     }
   }
@@ -304,6 +312,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnSair) {
     btnSair.addEventListener("click", () => {
       sessionStorage.removeItem("adminAuth");
+      sessionStorage.removeItem("memberAuth");
+      localStorage.removeItem("visitorMode");
       window.location.href = "index.html";
     });
   }
