@@ -45,6 +45,32 @@ const warriorDetails = {
 
 // =================== LOCALSTORAGE FUNCTIONS ===================
 
+// Carregar dados iniciais do data.json se localStorage estiver vazio
+async function loadInitialData() {
+  if (!localStorage.getItem(STORAGE_KEY)) {
+    try {
+      const response = await fetch('/data.json');
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data.alistamentos || []));
+      }
+    } catch (error) {
+      console.log('Erro ao carregar dados iniciais:', error);
+    }
+  }
+  if (!localStorage.getItem('aeronaves')) {
+    try {
+      const response = await fetch('/data.json');
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('aeronaves', JSON.stringify(data.aeronaves || []));
+      }
+    } catch (error) {
+      console.log('Erro ao carregar dados iniciais:', error);
+    }
+  }
+}
+
 // Função salvar alistamento local
 function salvarInscricao(data) {
   const inscricoes = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
@@ -160,6 +186,9 @@ const unitDetails = {
     additional: "Opera 24/7 para responder a emergências em todo o território brasileiro, incluindo regiões remotas e oceânicas."
   }
 };
+
+// Carregar dados iniciais ao iniciar
+loadInitialData();
 
 // =================== MODAL DE LOGIN ===================
 document.addEventListener("DOMContentLoaded", () => {
