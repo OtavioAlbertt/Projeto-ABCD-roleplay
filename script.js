@@ -43,30 +43,67 @@ const warriorDetails = {
 // =================== LOCALSTORAGE ONLY ===================
 // All Supabase functions have been removed. Using localStorage only.
 
-// =================== LOCALSTORAGE FUNCTIONS ===================
+// =================== SERVER API FUNCTIONS ===================
 
-// Carregar dados iniciais - apenas inicializar localStorage se vazio
-function loadInitialData() {
-  if (!localStorage.getItem(STORAGE_KEY)) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
-  }
-  if (!localStorage.getItem('aeronaves')) {
-    localStorage.setItem('aeronaves', JSON.stringify([]));
+// Carregar dados iniciais do servidor
+async function loadInitialData() {
+  try {
+    const response = await fetch('/api/data');
+    const data = await response.json();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data.alistamentos || []));
+    localStorage.setItem('aeronaves', JSON.stringify(data.aeronaves || []));
+  } catch (error) {
+    console.error('Erro ao carregar dados iniciais:', error);
+    // Fallback para localStorage se o servidor não estiver disponível
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
+    }
+    if (!localStorage.getItem('aeronaves')) {
+      localStorage.setItem('aeronaves', JSON.stringify([]));
+    }
   }
 }
 
-// Função salvar alistamento local
-function salvarInscricao(data) {
-  const inscricoes = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-  inscricoes.push(data);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(inscricoes));
+// Função salvar alistamento via API
+async function salvarInscricao(data) {
+  try {
+    const response = await fetch('/api/alistamentos', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    if (response.ok) {
+      // Recarregar dados após salvar
+      await loadInitialData();
+      return true;
+    }
+  } catch (error) {
+    console.error('Erro ao salvar alistamento:', error);
+  }
+  return false;
 }
 
-// Função salvar aeronave local
-function salvarAeronave(data) {
-  const aeronaves = JSON.parse(localStorage.getItem('aeronaves')) || [];
-  aeronaves.push(data);
-  localStorage.setItem('aeronaves', JSON.stringify(aeronaves));
+// Função salvar aeronave via API
+async function salvarAeronave(data) {
+  try {
+    const response = await fetch('/api/aeronaves', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    if (response.ok) {
+      // Recarregar dados após salvar
+      await loadInitialData();
+      return true;
+    }
+  } catch (error) {
+    console.error('Erro ao salvar aeronave:', error);
+  }
+  return false;
 }
 
 // Função carregar alistamentos
@@ -79,18 +116,38 @@ function carregarAeronaves() {
   return JSON.parse(localStorage.getItem('aeronaves')) || [];
 }
 
-// Função deletar alistamento
-function deletarInscricao(index) {
-  const inscricoes = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-  inscricoes.splice(index, 1);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(inscricoes));
+// Função deletar alistamento via API
+async function deletarInscricao(index) {
+  try {
+    const response = await fetch(`/api/alistamentos/${index}`, {
+      method: 'DELETE',
+    });
+    if (response.ok) {
+      // Recarregar dados após deletar
+      await loadInitialData();
+      return true;
+    }
+  } catch (error) {
+    console.error('Erro ao deletar alistamento:', error);
+  }
+  return false;
 }
 
-// Função deletar aeronave
-function deletarAeronave(index) {
-  const aeronaves = JSON.parse(localStorage.getItem('aeronaves')) || [];
-  aeronaves.splice(index, 1);
-  localStorage.setItem('aeronaves', JSON.stringify(aeronaves));
+// Função deletar aeronave via API
+async function deletarAeronave(index) {
+  try {
+    const response = await fetch(`/api/aeronaves/${index}`, {
+      method: 'DELETE',
+    });
+    if (response.ok) {
+      // Recarregar dados após deletar
+      await loadInitialData();
+      return true;
+    }
+  } catch (error) {
+    console.error('Erro ao deletar aeronave:', error);
+  }
+  return false;
 }
 
 
