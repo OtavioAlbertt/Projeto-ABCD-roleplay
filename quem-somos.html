@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="style-quem-somos.css">
 
   <!-- Script global -->
+  <script src="script.js"></script>
 
 
   <style>
@@ -101,8 +102,8 @@
       <li><a class="nav-link" href="index.html">Início</a></li>
       <li><a class="nav-link active" href="quem-somos.html">Quem Somos</a></li>
       <li><a class="nav-link" href="hierarquia.html">Hierarquia</a></li>
-      <li><a class="nav-link" href="faca-parte.html">Faça Parte</a></li>
-  
+      <li><a class="nav-link" href="aeronaves.html">Aeronaves</a></li>
+      <li><a class="nav-link" href="Operações.html">Operações</a></li>
     </ul>
 
     <button id="btnEntrar" class="btn-outline-success">Entrar</button>
@@ -204,64 +205,6 @@
 
     initParticles();
     animate();
-
-    // Script do Modal de Login
-    // =================== LOGINS DOS MEMBROS ===================
-    const MEMBER_LOGINS = {
-      "Maj. Luke": "luke2025",
-      "1° Sgt. Albert": "albert2025",
-      "2° Sgt. Carolina": "carolina2025",
-      "1° Ten. Prendel": "prendel2025",
-      "Cap. Vallote": "vallote2025"
-    };
-
-    const modal = document.getElementById('loginModal');
-    const btnEntrar = document.getElementById('btnEntrar');
-    const closeBtns = document.getElementsByClassName('close');
-    const loginConfirm = document.getElementById('loginConfirm');
-
-    // Abrir modal ao clicar em Entrar
-    btnEntrar.onclick = function() {
-      modal.style.display = 'block';
-    }
-
-    // Fechar modal ao clicar no X
-    for (let i = 0; i < closeBtns.length; i++) {
-      closeBtns[i].onclick = function() {
-        modal.style.display = 'none';
-      }
-    }
-
-    // Fechar modal ao clicar fora dele
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = 'none';
-      }
-    }
-
-    // Confirmar login
-    loginConfirm.onclick = function() {
-      const login = document.getElementById('loginUser').value;
-      const password = document.getElementById('loginPassword').value;
-      if (login === 'admin' && password === '1822br') {
-        sessionStorage.setItem('adminAuth', 'true');
-        window.location.href = 'admin.html';
-      } else if (MEMBER_LOGINS[login] && password === MEMBER_LOGINS[login]) {
-        sessionStorage.setItem('memberAuth', login);
-        window.location.href = 'registro-aeronaves.html';
-      } else {
-        alert('Login ou senha incorretos!');
-      }
-      document.getElementById('loginUser').value = '';
-      document.getElementById('loginPassword').value = '';
-    }
-
-    // Permitir login com Enter
-    document.getElementById('loginPassword').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        loginConfirm.click();
-      }
-    });
   </script>
 
 </body>

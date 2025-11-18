@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ e <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
@@ -56,6 +56,54 @@
       color: #fff;
       box-shadow: 0 0 15px rgba(0,191,255,0.5);
       transform: scale(1.05);
+    }
+
+    /* Modal de Login */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+    }
+    .modal-content {
+      background: rgba(255,255,255,0.1);
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #00bfff;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,191,255,0.5);
+    }
+    .modal-content h3 {
+      color: #00bfff;
+      margin-bottom: 20px;
+    }
+    .modal-content input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #00bfff;
+      border-radius: 5px;
+      background: rgba(255,255,255,0.1);
+      color: #e0e8ff;
+      outline: none;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #fff;
     }
 
     /* ======== Formulário ======== */
@@ -190,11 +238,6 @@
       <span class="min">| Força Aérea Brasileira</span>
     </div>
     <ul class="nav-links">
-      <li><a class="nav-link" href="index.html">Início</a></li>
-      <li><a class="nav-link" href="quem-somos.html">Quem Somos</a></li>
-      <li><a class="nav-link" href="hierarquia.html">Hierarquia</a></li>
-      <li><a class="nav-link active" href="faca-parte.html">Faça Parte</a></li>
-
     </ul>
     <button id="btnEntrar" class="btn-outline-success">Entrar</button>
   </nav>
@@ -337,64 +380,6 @@
 
     initParticles();
     animate();
-
-    // Script do Modal de Login
-    // =================== LOGINS DOS MEMBROS ===================
-    const MEMBER_LOGINS = {
-      "Maj. Luke": "luke2025",
-      "1° Sgt. Albert": "albert2025",
-      "2° Sgt. Carolina": "carolina2025",
-      "1° Ten. Prendel": "prendel2025",
-      "Cap. Vallote": "vallote2025"
-    };
-
-    const modal = document.getElementById('loginModal');
-    const btnEntrar = document.getElementById('btnEntrar');
-    const closeBtns = document.getElementsByClassName('close');
-    const loginConfirm = document.getElementById('loginConfirm');
-
-    // Abrir modal ao clicar em Entrar
-    btnEntrar.onclick = function() {
-      modal.style.display = 'block';
-    }
-
-    // Fechar modal ao clicar no X
-    for (let i = 0; i < closeBtns.length; i++) {
-      closeBtns[i].onclick = function() {
-        modal.style.display = 'none';
-      }
-    }
-
-    // Fechar modal ao clicar fora dele
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = 'none';
-      }
-    }
-
-    // Confirmar login
-    loginConfirm.onclick = function() {
-      const login = document.getElementById('loginUser').value;
-      const password = document.getElementById('loginPassword').value;
-      if (login === 'admin' && password === '1822br') {
-        sessionStorage.setItem('adminAuth', 'true');
-        window.location.href = 'admin.html';
-      } else if (MEMBER_LOGINS[login] && password === MEMBER_LOGINS[login]) {
-        sessionStorage.setItem('memberAuth', login);
-        window.location.href = 'registro-aeronaves.html';
-      } else {
-        alert('Login ou senha incorretos!');
-      }
-      document.getElementById('loginUser').value = '';
-      document.getElementById('loginPassword').value = '';
-    }
-
-    // Permitir login com Enter
-    document.getElementById('loginPassword').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        loginConfirm.click();
-      }
-    });
   </script>
 </body>
 </html>

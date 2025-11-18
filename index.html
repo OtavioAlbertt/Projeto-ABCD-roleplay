@@ -40,8 +40,15 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.5);
-      backdrop-filter: blur(5px);
+      background-color: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      pointer-events: auto;
+    }
+    .modal.home-modal {
+      pointer-events: none;
+    }
+    .modal.home-modal .modal-content {
+      pointer-events: auto;
     }
     .modal-content {
       background: rgba(255,255,255,0.1);
@@ -96,7 +103,8 @@
       <li><a class="nav-link active" href="index.html">Início</a></li>
       <li><a class="nav-link" href="quem-somos.html">Quem Somos</a></li>
       <li><a class="nav-link" href="hierarquia.html">Hierarquia</a></li>
-      <li><a class="nav-link" href="faca-parte.html">Faça Parte</a></li>
+      <li><a class="nav-link" href="aeronaves.html">Aeronaves</a></li>
+      <li><a class="nav-link" href="Operações.html">Operações</a></li>
     </ul>
 
     <button id="btnEntrar" class="btn-outline-success">Entrar</button>
@@ -109,7 +117,6 @@
         A <strong>Força Aérea Brasileira</strong> (FAB) é responsável pela defesa do espaço aéreo nacional,
         garantindo soberania, segurança e integração do território brasileiro.
       </p>
-      <a href="faca-parte.html" target="_blank" class="banner-button">Alistamento Militar</a>
     </div>
   </section>
 
@@ -127,7 +134,7 @@
   <section class="info-section">
     <div class="info-row">
       <div class="info-card">
-        <img src="fotos/Missao.png" alt="Missão da FAB">
+        <img src="Missao.png" alt="Missão da FAB">
         <div class="info-text">
           <h3>Missão</h3>
           <p>
@@ -137,7 +144,7 @@
       </div>
 
       <div class="info-card">
-        <img src="fotos/operaçoes.png" alt="Operações e Treinamentos">
+        <img src="operaçoes.png" alt="Operações e Treinamentos">
         <div class="info-text">
           <h3>Operações e Treinamentos</h3>
           <p>
@@ -149,7 +156,7 @@
 
     <div class="info-row">
       <div class="info-card">
-        <img src="fotos/Tecnologia.png" alt="Tecnologia e Inovação">
+        <img src="Tecnologia.png" alt="Tecnologia e Inovação">
         <div class="info-text">
           <h3>Tecnologia e Inovação</h3>
           <p>
@@ -157,8 +164,30 @@
           </p>
         </div>
       </div>
+
+      <div class="info-card">
+        <img src="Tecnologia2.png" alt="Aeronaves de Asa Rotativa">
+        <div class="info-text">
+          <h3>Aeronaves de Asa Rotativa</h3>
+          <p>
+            A FAB investe em aeronaves de asa rotativa para garantir rapidez, precisão e presença em qualquer território do Brasil.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <img src="AsaFixa.png" alt="Aeronaves de Asa Fixa">
+        <div class="info-text">
+          <h3>Aeronaves de Asa Fixa</h3>
+          <p>
+            A FAB investe em aeronaves de asa fixa para garantir superioridade aérea, alcance estratégico e defesa do espaço aéreo brasileiro.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
+
+
 
   <!-- Modal de Login -->
   <div id="loginModal" class="modal" style="display: none;">
@@ -168,6 +197,15 @@
       <input type="text" id="loginUser" placeholder="Nome de usuário" />
       <input type="password" id="loginPassword" placeholder="Digite a senha" />
       <button id="loginConfirm" class="btn-outline-success">Entrar</button>
+    </div>
+  </div>
+
+  <!-- Modal de Detalhes da Página Inicial -->
+  <div id="homeModal" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width: 600px;">
+      <span class="close" id="homeModalClose">&times;</span>
+      <img id="homeImage" src="" alt="Imagem" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 20px;">
+      <p id="homeDescription" style="font-size: 18px; text-align: center; color: #e0e8ff;"></p>
     </div>
   </div>
 
@@ -226,66 +264,6 @@
 
     initParticles();
     animate();
-  </script>
-
-  <!-- Script do Modal de Login -->
-  <script>
-    // =================== LOGINS DOS MEMBROS ===================
-    const MEMBER_LOGINS = {
-      "Maj. Luke": "luke2025",
-      "1° Sgt. Albert": "albert2025",
-      "2° Sgt. Carolina": "carolina2025",
-      "1° Ten. Prendel": "prendel2025",
-      "Cap. Vallote": "vallote2025"
-    };
-
-    const modal = document.getElementById('loginModal');
-    const btnEntrar = document.getElementById('btnEntrar');
-    const closeBtns = document.getElementsByClassName('close');
-    const loginConfirm = document.getElementById('loginConfirm');
-
-    // Abrir modal ao clicar em Entrar
-    btnEntrar.onclick = function() {
-      modal.style.display = 'block';
-    }
-
-    // Fechar modal ao clicar no X
-    for (let i = 0; i < closeBtns.length; i++) {
-      closeBtns[i].onclick = function() {
-        modal.style.display = 'none';
-      }
-    }
-
-    // Fechar modal ao clicar fora dele
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = 'none';
-      }
-    }
-
-    // Confirmar login
-    loginConfirm.onclick = function() {
-      const login = document.getElementById('loginUser').value;
-      const password = document.getElementById('loginPassword').value;
-      if (login === 'admin' && password === '1822br') {
-        sessionStorage.setItem('adminAuth', 'true');
-        window.location.href = 'admin.html';
-      } else if (MEMBER_LOGINS[login] && password === MEMBER_LOGINS[login]) {
-        sessionStorage.setItem('memberAuth', login);
-        window.location.href = 'registro-aeronaves.html';
-      } else {
-        alert('Login ou senha incorretos!');
-      }
-      document.getElementById('loginUser').value = '';
-      document.getElementById('loginPassword').value = '';
-    }
-
-    // Permitir login com Enter
-    document.getElementById('loginPassword').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        loginConfirm.click();
-      }
-    });
   </script>
 
 </body>
