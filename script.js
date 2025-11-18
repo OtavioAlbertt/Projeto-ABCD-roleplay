@@ -53,9 +53,11 @@ async function loadInitialData() {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data.alistamentos || []));
+      } else {
+        console.log('Erro na resposta:', response.status);
       }
     } catch (error) {
-      console.log('Erro ao carregar dados iniciais:', error);
+      console.log('Erro ao carregar dados iniciais de alistamentos:', error);
     }
   }
   if (!localStorage.getItem('aeronaves')) {
@@ -64,9 +66,11 @@ async function loadInitialData() {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('aeronaves', JSON.stringify(data.aeronaves || []));
+      } else {
+        console.log('Erro na resposta:', response.status);
       }
     } catch (error) {
-      console.log('Erro ao carregar dados iniciais:', error);
+      console.log('Erro ao carregar dados iniciais de aeronaves:', error);
     }
   }
 }
