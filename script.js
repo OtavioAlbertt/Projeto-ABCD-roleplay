@@ -49,7 +49,7 @@ const warriorDetails = {
 async function loadInitialData() {
   if (!localStorage.getItem(STORAGE_KEY)) {
     try {
-      const response = await fetch('/data.json');
+      const response = await fetch('./data.json');
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data.alistamentos || []));
@@ -60,7 +60,7 @@ async function loadInitialData() {
   }
   if (!localStorage.getItem('aeronaves')) {
     try {
-      const response = await fetch('/data.json');
+      const response = await fetch('./data.json');
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('aeronaves', JSON.stringify(data.aeronaves || []));
