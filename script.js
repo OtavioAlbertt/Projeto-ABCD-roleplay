@@ -438,7 +438,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // =================== CARD LATERAL DOS GUERREIROS ===================
+  // =================== MODAL DOS GUERREIROS ===================
   // Adicionar event listeners aos membros da hierarquia
   const membros = document.querySelectorAll('.membro');
   membros.forEach(membro => {
@@ -446,15 +446,32 @@ document.addEventListener("DOMContentLoaded", () => {
       const name = this.querySelector('p strong').textContent.trim();
       const details = warriorDetails[name];
       if (details) {
-        const card = document.getElementById('warriorCard');
+        const modal = document.getElementById('warriorModal');
         document.getElementById('warriorImage').src = details.image;
         document.getElementById('warriorName').textContent = name;
         document.getElementById('warriorRole').textContent = details.role;
         document.getElementById('warriorDescription').textContent = details.description;
-        if (card) {
-          card.style.display = 'block';
+        if (modal) {
+          modal.style.display = 'block';
         }
       }
     });
   });
+
+  // Fechar modal dos guerreiros
+  const warriorModalClose = document.getElementById('warriorModalClose');
+  if (warriorModalClose) {
+    warriorModalClose.onclick = function() {
+      const modal = document.getElementById('warriorModal');
+      if (modal) modal.style.display = 'none';
+    }
+  }
+
+  // Fechar modal clicando fora
+  window.onclick = function(event) {
+    const modal = document.getElementById('warriorModal');
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  }
 });
