@@ -16,27 +16,27 @@ const warriorDetails = {
   "[EB] Luke": {
     image: "MajorDADOS.jpg",
     role: "Comando Geral",
-    description: "Maj. Luke é o líder supremo da Força Aérea Brasileira, um estrategista nato com décadas de experiência em operações aéreas. Sua carreira começou nas bases militares, onde demonstrou excepcional habilidade em liderança e tomada de decisões críticas. Como Comando Geral, Maj. Luke coordena todas as operações da FAB, garantindo que o espaço aéreo brasileiro esteja sempre protegido e que a instituição continue evoluindo com honra e excelência."
+    description: "[EB] Luke é o líder supremo da Força Aérea Brasileira, um estrategista nato com décadas de experiência em operações aéreas. Sua carreira começou nas bases militares, onde demonstrou excepcional habilidade em liderança e tomada de decisões críticas. Como Comando Geral, Maj. Luke coordena todas as operações da FAB, garantindo que o espaço aéreo brasileiro esteja sempre protegido e que a instituição continue evoluindo com honra e excelência."
   },
   "[EB] Albert": {
     image: "SargentoDADOS.png",
     role: "Comandante",
-    description: "1° Sgt. Albert é o Comandante operacional da FAB, responsável pela execução diária das missões. Sua trajetória é marcada por coragem e dedicação, tendo participado de inúmeras operações que protegeram o território brasileiro. Albert vive pela máxima 'Servir com honra', garantindo que cada missão seja executada com precisão e que a FAB mantenha sua reputação de excelência operacional."
+    description: "[EB] Albert é o Comandante operacional da FAB, responsável pela execução diária das missões. Sua trajetória é marcada por coragem e dedicação, tendo participado de inúmeras operações que protegeram o território brasileiro. Albert vive pela máxima 'Servir com honra', garantindo que cada missão seja executada com precisão e que a FAB mantenha sua reputação de excelência operacional."
   },
   "[EB] Carolina": {
     image: "CarolDADOS.png",
     role: "Subcomandante",
-    description: "2° Sgt. Carolina é a Subcomandante da FAB, uma líder inspiradora que quebrou barreiras no mundo militar. Sua inteligência estratégica e capacidade de liderança a tornaram uma referência na instituição. Carolina acredita que a força da FAB vem da união e diversidade de seus membros, trabalhando incansavelmente para manter a coesão e o alto padrão da instituição."
+    description: "[EB] Carolina é a Subcomandante da FAB, uma líder inspiradora que quebrou barreiras no mundo militar. Sua inteligência estratégica e capacidade de liderança a tornaram uma referência na instituição. Carolina acredita que a força da FAB vem da união e diversidade de seus membros, trabalhando incansavelmente para manter a coesão e o alto padrão da instituição."
   },
   "[EB] Prendel": {
     image: "PrendelDADOS.png",
     role: "Piloto",
-    description: "1° Ten. Prendel é um piloto de elite da FAB, com milhares de horas de voo e participação em missões críticas. Sua habilidade nos céus é lendária, tendo salvado vidas e protegido o território brasileiro inúmeras vezes. Prendel vive pelos céus, onde encontra sua verdadeira vocação. Cada voo é uma oportunidade de servir ao Brasil e demonstrar a superioridade aérea da FAB."
+    description: "[EB] Prendel é um piloto de elite da FAB, com milhares de horas de voo e participação em missões críticas. Sua habilidade nos céus é lendária, tendo salvado vidas e protegido o território brasileiro inúmeras vezes. Prendel vive pelos céus, onde encontra sua verdadeira vocação. Cada voo é uma oportunidade de servir ao Brasil e demonstrar a superioridade aérea da FAB."
   },
   "[EB] Vallote": {
     image: "ValloteDADOS.png",
     role: "Piloto",
-    description: "Cap. Vallote é um veterano piloto da FAB, com experiência em diversos tipos de aeronaves e missões. Sua carreira é marcada por lealdade, coragem e um profundo amor pela aviação militar brasileira. Vallote representa a tradição da FAB, transmitindo conhecimentos e valores para as novas gerações de guerreiros dos céus brasileiros."
+    description: "[EB] Vallote é um veterano piloto da FAB, com experiência em diversos tipos de aeronaves e missões. Sua carreira é marcada por lealdade, coragem e um profundo amor pela aviação militar brasileira. Vallote representa a tradição da FAB, transmitindo conhecimentos e valores para as novas gerações de guerreiros dos céus brasileiros."
   }
 };
 
